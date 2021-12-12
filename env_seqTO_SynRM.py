@@ -192,6 +192,7 @@ class seqTO_SynRM():
 
         if (self.void_count >= self.episode_length) or (self.frame_id >= self.episode_length):
             done = True
+            self.episode_id += 1
         else:
             done = False
             
@@ -272,7 +273,7 @@ class seqTO_SynRM():
         
         if self.frame_id == self.episode_length:
 
-            geo_file_name = str(self.frame_id) + '.mn'
+            geo_file_name = str(self.episode_id) + '.mn'
 
             eps_geo_file_loc = self.eps_data_dir / geo_file_name
             command = 'Call getDocument().save("' + str(eps_geo_file_loc) + '", infoMinimalModel)'
