@@ -30,8 +30,6 @@ def main():
                       current_save_dir = saves_current_folder
                       )
 
-
-
     ############
     # 0: Right #
     # 1: Left  #

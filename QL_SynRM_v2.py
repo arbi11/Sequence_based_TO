@@ -63,7 +63,7 @@ class QL_Agent():
         # Instantiate Resume Training if True
         
         data_directory = params['file_path'].parents[0] / 'Saves'
-        # current_time = datetime.datetime.now().strftime('%b%d_%H-%M-%S')
+        current_time = datetime.datetime.now().strftime('%b%d_%H-%M-%S')
         #
         # if not (os.path.exists(str(data_directory))):
         #     os.mkdir(data_directory)
