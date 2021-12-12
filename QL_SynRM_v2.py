@@ -277,6 +277,7 @@ class QL_Agent():
             if eps_id % self.params['test_frequency'] == 0:
                 
                 self.test = True
+                env.test = True
                 self.episode_buffer = {'observations': [],
                                        'actions': [],
                                        'rewards': [],
@@ -305,6 +306,7 @@ class QL_Agent():
                     tf.summary.scalar("Test/Sum_of_reward", sum(self.episode_buffer['rewards']), step=eps_id)     
 
                 self.test = False
+                env.test = False
 
             # save the dictionary, episodes, buffer, lr, 
             # if self.frame_id % self.params['checkpoint_save_frequency'] == 0:

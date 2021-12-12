@@ -49,7 +49,7 @@ class seqTO_SynRM():
         self.posR = 0
         self.posC = 3
         self.void_count = 0
-        done = False
+        self.test = False
         
         # History
         self.history = {'past_states' : [],
@@ -194,12 +194,18 @@ class seqTO_SynRM():
             done = True
 
             self.episode_id += 1
-            geo_file_name = str(self.episode_id) + '.mn'
+
+            if self.test == False:
+                geo_file_name = str(self.episode_id) + '.mn'
+            else:
+                geo_file_name = str(self.episode_id) + '_test.mn'
             eps_geo_file_loc = self.eps_data_dir / geo_file_name
 
             print('Eps Geo file name', str(eps_geo_file_loc))
-            command = 'Call getDocument().save("' + str(eps_geo_file_loc) + '", infoMinimalModel)'
-            self.mn.processCommand(command)
+            # command = 'Call getDocument().save("' + str(eps_geo_file_loc) + '", infoMinimalModel)'
+            # self.mn.processCommand(command)
+
+            self.save_magnet_geometry(str(eps_geo_file_loc))
 
         else:
             done = False
@@ -276,8 +282,10 @@ class seqTO_SynRM():
         avg_torque = 4*(sum(torque) / len(torque))
         # print('Torque Avg:', avg_torque)
                 
-        command = 'Call getDocument().save("'+ str(self.magnet_model_loc_set) + '", infoMinimalModel)'
-        self.mn.processCommand(command)
+        # command = 'Call getDocument().save("'+ str(self.magnet_model_loc_set) + '", infoMinimalModel)'
+        # self.mn.processCommand(command)
+
+        self.save_magnet_geometry(str(self.magnet_model_loc_set))
         
         if self.frame_id == self.episode_length:
 
@@ -289,6 +297,13 @@ class seqTO_SynRM():
                 # self.mn.processCommand(command)
             
         return(avg_torque)
+
+    def save_magnet_geometry(self, file_name):
+
+        command = 'Call getDocument().save("' + file_name + '", infoMinimalModel)'
+        self.mn.processCommand(command)
+
+
         
         
         
