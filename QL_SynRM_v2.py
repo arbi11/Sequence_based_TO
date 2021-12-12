@@ -13,6 +13,8 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 
+from functools import reduce
+
 import matplotlib.pyplot as plt
 plt.ioff()
 
@@ -150,7 +152,9 @@ class QL_Agent():
         :return: action
             
         """
-        state = np.array2string(raw_state.flatten(), separator='')
+
+        state_list = raw_state.flatten().tolist()
+        state = reduce((lambda x, y: str(x) + str(y)), state_list)
 
         try:
             max_value = max(self.Q_Table[state])
@@ -160,22 +164,22 @@ class QL_Agent():
             act = np.random.choice(self.params['num_actions'])
             self.Q_Table[state] = [0, 0, 0, 0]
 
-            if self.test == False:
-                p = np.random.uniform(0, 1)
-                if p < self.epsilon:
-                    act = np.arange(0,self.params['num_actions'])
-                    p = self.normalize(self.Q_Table[state])
-                    self.exploration_count += 1
-                    try:
-                        act = np.random.choice(np.arange(0,self.params['num_actions']), p=p)
-                    except:
-                        print(p)
-                        if state in self.Q_Table:
-                            print('Key exists')
-                            print(self.Q_Table[state])
-                        raise('p has an error')
-                else:
-                    act = act
+        if self.test == False:
+            p = np.random.uniform(0, 1)
+            if p < self.epsilon:
+                act = np.arange(0,self.params['num_actions'])
+                p = self.normalize(self.Q_Table[state])
+                self.exploration_count += 1
+                try:
+                    act = np.random.choice(np.arange(0,self.params['num_actions']), p=p)
+                except:
+                    print(p)
+                    if state in self.Q_Table:
+                        print('Key exists')
+                        print(self.Q_Table[state])
+                    raise('p has an error')
+            else:
+                act = act
 
         return act
 
@@ -204,10 +208,13 @@ class QL_Agent():
             self.exploration_count = 0
             
             state = env.reset()
-            print(np.array2string(state.flatten(), separator=''))
-            print(type(np.array2string(state.flatten(), separator='')))
+            # print(np.array2string(state.flatten(), separator=''))
+            # print(type(np.array2string(state.flatten(), separator='')))
             for frame_id in range(self.episode_length):
-                self.episode_buffer['observations'].append(np.array2string(state.flatten(), separator=''))
+
+                state_list = state.flatten().tolist()
+                state = reduce((lambda x, y: str(x) + str(y)), state_list)
+                self.episode_buffer['observations'].append(state)
                 action = self.compute_action(state)
                 next_state, R, done = env.step(action)
                 

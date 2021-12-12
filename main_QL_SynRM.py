@@ -47,12 +47,12 @@ if __name__ == '__main__':
     parser.add_argument('--episode_length_multiplier', default=3)
     
     parser.add_argument('--verbose', default=False)    
-    parser.add_argument('--num_episodes', default=2000) # Number of episodes to run
+    parser.add_argument('--num_episodes', default=1000) # Number of episodes to run
 
     parser.add_argument('--gamma', default= 0.99) # discount_factor
     parser.add_argument('--lr', default=0.01) # RL specific
     # parser.add_argument('--epsilon_decay', default=1e-3)
-    parser.add_argument('--epsilon_decay', default=1e-4)
+    parser.add_argument('--epsilon_decay', default=1e-2)
 
     parser.add_argument('--test_frequency', default=25)  # RL specific    
 

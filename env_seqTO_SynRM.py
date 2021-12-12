@@ -36,7 +36,7 @@ class seqTO_SynRM():
         self.T_avg_blank = 0
         self.adv_angle = 38
         
-        self.state = np.zeros((self.dd_size, self.dd_size))
+        self.state = np.zeros((self.dd_size, self.dd_size), dtype='int')
         self.posR = 0
         self.posC = 3
         self.void_count = 0
@@ -89,7 +89,7 @@ class seqTO_SynRM():
         if self.episode_id == 0:
             self.T_avg_blank = self.performance_evaluation(self.adv_angle)
                     
-        self.state = np.ones((self.dd_size+4, self.dd_size+3)) *(-1)
+        self.state = np.ones((self.dd_size+4, self.dd_size+3), dtype='int') *(-1)
         self.posR = 1
         self.posC = 4
         
