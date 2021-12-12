@@ -229,7 +229,7 @@ class QL_Agent():
                 else:
                     state = next_state
                                         
-            print(f'Eps: {env.episode_id}, Avg Torque: {env.history["past_avg_torques"][-1]}, Void count: {env.void_count}, Exploration: {self.exploration_count}, Reward: {sum(self.episode_buffer["rewards"])}')
+            print(f'Eps: {env.episode_id}, Avg Torque: {env.history["past_avg_torques"][-1]}, Void count: {env.void_count}, Exploration: {self.exploration_count}, Reward Sum: {sum(self.episode_buffer["rewards"])}')
         
             self.buffer['observations'] += self.episode_buffer['observations'][:-1]
             self.buffer['actions'] += self.episode_buffer['actions'][:-1]

@@ -205,7 +205,8 @@ class seqTO_SynRM():
             # command = 'Call getDocument().save("' + str(eps_geo_file_loc) + '", infoMinimalModel)'
             # self.mn.processCommand(command)
 
-            self.save_magnet_geometry(str(eps_geo_file_loc))
+            if (self.episode_id % self.params['eps_data_save_frequency'] == 0) or (self.test == True):
+                self.save_magnet_geometry(str(eps_geo_file_loc))
 
         else:
             done = False

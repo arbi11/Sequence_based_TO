@@ -65,7 +65,7 @@ if __name__ == '__main__':
     parser.add_argument('--test_frequency', default=25)  # RL specific    
 
     parser.add_argument('--save_static_plots', default=True) # Save plots for the episode
-    parser.add_argument('--eps_data_save_frequency', default=5) # save every 5 episodes
+    parser.add_argument('--eps_data_save_frequency', default=1) # save every 5 episodes
     parser.add_argument('--checkpoint_save_frequency', default=50) # Save NN weights every 5 eps
 
     parser.add_argument('--RL_session_no', default=None) # Only needed if resume training - iF none, most recent run is resumed
