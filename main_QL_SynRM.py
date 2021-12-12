@@ -16,9 +16,7 @@ def main():
     current_time = datetime.datetime.now().strftime('%b%d_%H-%M-%S')
     saves_main_folder = params['file_path'].parents[0] / 'Saves'
     saves_current_folder = params['file_path'].parents[0] / 'Saves' / current_time
-    
-    # print(saves_current_folder, '\n', saves_main_folder)
-    
+
     env = seqTO_SynRM(main_folder_loc = params['file_path'].parents[0],
                       episode_length = int(params['design_domain_size']*params['episode_length_multiplier']),
                       dd_size = params['design_domain_size'],
