@@ -2,13 +2,14 @@
 
 """
 
+import os
 import numpy as np
 import pandas as pd
 import win32com.client as win32
 
 class seqTO_SynRM():
     
-    def __init__(self, main_folder_loc = None, episode_length = None, dd_size = None, params = None):
+    def __init__(self, main_folder_loc = None, episode_length = None, dd_size = None, params = None, current_save_dir=None):
         
         if params == None:
             raise('params missing')
@@ -28,9 +29,17 @@ class seqTO_SynRM():
         if episode_length == None:
             self.episode_length = int(dd_size*self.params['episode_length_multiplier'])
         else:
-            self.episode_length = episode_length            
-            
-        # Initializinhg self decralred variables
+            self.episode_length = episode_length
+
+        if current_save_dir == None:
+            raise('current_save_dir missing')
+        else:
+            self.current_save_dir = current_save_dir
+            self.eps_data_dir = self.current_save_dir / 'eps_data'
+            if not (os.path.exists(str(self.eps_data_dir))):
+                os.mkdir(self.eps_data_dir)
+
+        # Initializing self declared variables
         self.frame_id = 0
         self.episode_id = 0
         self.T_avg_blank = 0
@@ -262,6 +271,11 @@ class seqTO_SynRM():
         self.mn.processCommand(command)
         
         if self.frame_id == self.episode_length:
+
+            geo_file_name = self.eps_data_dir / str(self.frame_id) + '.mn'
+            command = 'Call getDocument().save("' + str(geo_file_name) + '", infoMinimalModel)'
+            self.mn.processCommand(command)
+
             command = 'Call getDocument().getView().close(False)'
             self.mn.processCommand(command)
             

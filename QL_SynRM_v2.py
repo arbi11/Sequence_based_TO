@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 plt.ioff()
 
 class QL_Agent():
-    def __init__(self, params, episode_length):
+    def __init__(self, params, episode_length, current_save_dir):
 
         """
         
@@ -63,14 +63,16 @@ class QL_Agent():
         # Instantiate Resume Training if True
         
         data_directory = params['file_path'].parents[0] / 'Saves'
-        current_time = datetime.datetime.now().strftime('%b%d_%H-%M-%S')
-        
-        if not (os.path.exists(str(data_directory))):
-            os.mkdir(data_directory)
-            
-        current_save_dir = data_directory / current_time
-        if not (os.path.exists(str(current_save_dir))):
-            os.mkdir(current_save_dir)
+        # current_time = datetime.datetime.now().strftime('%b%d_%H-%M-%S')
+        #
+        # if not (os.path.exists(str(data_directory))):
+        #     os.mkdir(data_directory)
+        #
+        # current_save_dir = data_directory / current_time
+        # if not (os.path.exists(str(current_save_dir))):
+        #     os.mkdir(current_save_dir)
+
+        current_save_dir = current_save_dir
                     
         # train_logFile_location = self.params['saves_main_folder'] / 'session_files_log.csv'
 

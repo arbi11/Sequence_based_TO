@@ -15,13 +15,23 @@ def main():
     
     current_time = datetime.datetime.now().strftime('%b%d_%H-%M-%S')
     saves_main_folder = params['file_path'].parents[0] / 'Saves'
+
+    if not (os.path.exists(str(saves_main_folder))):
+        os.mkdir(saves_main_folder)
+
     saves_current_folder = params['file_path'].parents[0] / 'Saves' / current_time
+    if not (os.path.exists(str(saves_current_folder))):
+        os.mkdir(saves_current_folder)
 
     env = seqTO_SynRM(main_folder_loc = params['file_path'].parents[0],
                       episode_length = int(params['design_domain_size']*params['episode_length_multiplier']),
                       dd_size = params['design_domain_size'],
-                      params=params
-                      )    
+                      params=params,
+                      current_save_dir = saves_current_folder
+                      )
+
+
+
     ############
     # 0: Right #
     # 1: Left  #
@@ -30,7 +40,7 @@ def main():
     ############
     episode_length = int(params['design_domain_size']*params['episode_length_multiplier'])
     
-    agent = QL_Agent(params = params, episode_length = episode_length)
+    agent = QL_Agent(params = params, episode_length = episode_length, current_save_dir = saves_current_folder)
     agent.train(env)
     
 if __name__ == '__main__':
