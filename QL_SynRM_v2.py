@@ -284,7 +284,9 @@ class QL_Agent():
                 
                 state = env.reset()
                 for frame_id in range(self.episode_length):
-                    self.episode_buffer['observations'].append(state.flatten('F'))
+                    state_list = state.flatten().tolist()
+                    state = reduce((lambda x, y: str(x) + str(y)), state_list)
+
                     action = self.compute_action(state)
                     next_state, R, done = env.step(action)
                     
