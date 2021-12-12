@@ -143,7 +143,7 @@ class QL_Agent():
             arr3 = [qs/sum(arr2) for qs in arr2]
             return(arr3)
        
-    def compute_action(self, raw_state):
+    def compute_action(self, state):
         """
         :param state: pandas.DataFrame
             
@@ -153,8 +153,8 @@ class QL_Agent():
             
         """
 
-        state_list = raw_state.flatten().tolist()
-        state = reduce((lambda x, y: str(x) + str(y)), state_list)
+        # state_list = raw_state.flatten().tolist()
+        # state = reduce((lambda x, y: str(x) + str(y)), state_list)
 
         try:
             max_value = max(self.Q_Table[state])
