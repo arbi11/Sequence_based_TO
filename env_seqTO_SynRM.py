@@ -193,6 +193,13 @@ class seqTO_SynRM():
         if (self.void_count >= self.episode_length) or (self.frame_id >= self.episode_length):
             done = True
             self.episode_id += 1
+            geo_file_name = str(self.episode_id) + '.mn'
+            eps_geo_file_loc = self.eps_data_dir / geo_file_name
+
+            print('Eps Geo file name', str(eps_geo_file_loc))
+            command = 'Call getDocument().save("' + str(eps_geo_file_loc) + '", infoMinimalModel)'
+            self.mn.processCommand(command)
+
         else:
             done = False
             
@@ -272,12 +279,6 @@ class seqTO_SynRM():
         self.mn.processCommand(command)
         
         if self.frame_id == self.episode_length:
-
-            geo_file_name = str(self.episode_id) + '.mn'
-
-            eps_geo_file_loc = self.eps_data_dir / geo_file_name
-            command = 'Call getDocument().save("' + str(eps_geo_file_loc) + '", infoMinimalModel)'
-            self.mn.processCommand(command)
 
             command = 'Call getDocument().getView().close(False)'
             self.mn.processCommand(command)
