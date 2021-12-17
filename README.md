@@ -29,27 +29,17 @@ SynRM with optimized rotor:
 
 ---
 The citation for the work:
-
-  @article{khan2020sequence,
-    title={Sequence-Based Environment for Topology Optimization},
-    author={Khan, Arbaaz and Midha, Chetan and Lowther, David Alister},
-    journal={IEEE Transactions on Magnetics},
-    volume={56},
-    number={3},
-    pages={1--4},
-    year={2020},
-    publisher={IEEE}
-  }
   
   
-         @article{jagtap2020adaptive,
-       title={Adaptive activation functions accelerate convergence in deep and physics-informed neural networks},
-       author={Jagtap, Ameya D and Kawaguchi, Kenji and Karniadakis, George Em},
-       journal={Journal of Computational Physics},
-       volume={404},
-       pages={109136},
+         @article{khan2020sequence,
+       title={Sequence-Based Environment for Topology Optimization},
+       author={Khan, Arbaaz and Midha, Chetan and Lowther, David Alister},
+       journal={IEEE Transactions on Magnetics},
+       volume={56},
+       number={3},
+       pages={1--4},
        year={2020},
-       publisher={Elsevier}
+       publisher={IEEE}
        }
        
        
