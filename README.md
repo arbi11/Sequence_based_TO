@@ -1,4 +1,4 @@
-# SeqTO_SynRM
+# Sequence-based Topology Optimisation for Electromagnetic devices using Reinforcement Learning
 Implementation of Sequence based Topology Optimization method (SeqTO-v1). 
 
 Based on the following paper:
