@@ -29,16 +29,18 @@ SynRM with optimized rotor:
 
 ---
 The citation for the work:
-@article{khan2020sequence,
-  title={Sequence-Based Environment for Topology Optimization},
-  author={Khan, Arbaaz and Midha, Chetan and Lowther, David Alister},
-  journal={IEEE Transactions on Magnetics},
-  volume={56},
-  number={3},
-  pages={1--4},
-  year={2020},
-  publisher={IEEE}
-}
+
+  @article{khan2020sequence,
+    title={Sequence-Based Environment for Topology Optimization},
+    author={Khan, Arbaaz and Midha, Chetan and Lowther, David Alister},
+    journal={IEEE Transactions on Magnetics},
+    volume={56},
+    number={3},
+    pages={1--4},
+    year={2020},
+    publisher={IEEE}
+  }
+
 ---
 
 **Dependencies**
