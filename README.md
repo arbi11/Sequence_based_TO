@@ -40,6 +40,19 @@ The citation for the work:
     year={2020},
     publisher={IEEE}
   }
+  
+  
+         @article{jagtap2020adaptive,
+       title={Adaptive activation functions accelerate convergence in deep and physics-informed neural networks},
+       author={Jagtap, Ameya D and Kawaguchi, Kenji and Karniadakis, George Em},
+       journal={Journal of Computational Physics},
+       volume={404},
+       pages={109136},
+       year={2020},
+       publisher={Elsevier}
+       }
+       
+       
 
 ---
 
